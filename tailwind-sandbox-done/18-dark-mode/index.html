@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -21,11 +21,27 @@
     .toggle-checkbox:checked+.toggle-label {
       background-color: #68d391;
     }
+
+    /* Add transition for smoother toggle */
+    .toggle-checkbox {
+      transition: all 0.3s;
+    }
+
+    .toggle-label {
+      transition: background-color 0.3s;
+    }
+
+    /* Add visual indicator text */
+    .mode-indicator {
+      margin-left: 8px;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
   </style>
   <title>Dark Mode</title>
 </head>
 
-<body>
+<body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
   <!-- By default, you can have your project use whatever mode your OS is using. You can use "dark:{class}". You can also set your config to use a class instead of using your OS mode -->
   <div
     class="container mx-auto mt-10 bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
@@ -38,25 +54,49 @@
     </p>
   </div>
 
-  <div class="relative inline-block w-10 me-2 ms-6 mt-6 align-middle select-none transition duration-200 ease-in">
-    <input type="checkbox" name="toggle" id="toggle" checked
-      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-    <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+  <div class="flex items-center ms-6 mt-6">
+    <div class="relative inline-block w-10 me-2 align-middle select-none transition duration-200 ease-in">
+      <input type="checkbox" name="toggle" id="toggle" checked
+        class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+      <label for="toggle"
+        class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+    </div>
+    <span id="modeText" class="mode-indicator text-slate-900 dark:text-white">Dark Mode</span>
   </div>
 
   <script>
-    document.getElementById('toggle').addEventListener('change', function () {
+    // Set the toggle state based on current dark mode class
+    const toggle = document.getElementById('toggle');
+    const modeText = document.getElementById('modeText');
+
+    // On page load, sync toggle with dark mode class
+    function syncToggleWithDarkMode() {
+      const isDark = document.documentElement.classList.contains('dark');
+      toggle.checked = isDark;
+      updateModeText();
+    }
+    syncToggleWithDarkMode();
+
+    // Add event listener for toggle changes
+    toggle.addEventListener('change', function () {
       if (this.checked) {
-        document.documentElement.classList.add('dark')
+        document.documentElement.classList.add('dark');
       } else {
-        document.documentElement.classList.remove('dark')
+        document.documentElement.classList.remove('dark');
       }
-    })
+      updateModeText();
+    });
+
+    // Update the mode text based on toggle state
+    function updateModeText() {
+      modeText.textContent = toggle.checked ? "Dark Mode" : "Light Mode";
+    }
   </script>
 
   <!-- TAILWIND CSS v4 DARK MODE UPDATES -->
   <div class="mt-8 p-6 bg-white dark:bg-gray-800 rounded shadow">
     <h2 class="text-2xl font-bold mb-4 text-black dark:text-white">Tailwind CSS v4 Dark Mode Updates</h2>
+
 
     <div class="mb-6">
       <h3 class="text-xl font-semibold mb-2 text-black dark:text-white">Dark Mode Configuration in v4</h3>
