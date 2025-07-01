@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>New Tailwind CSS v4 Features</title>
+</head>
+
+<body class="bg-gray-50 p-6">
+    <h1 class="text-3xl font-bold mb-8 text-center">New Features in Tailwind CSS v4</h1>
+
+    <!-- 1. 3D Transforms -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">3D Transforms</h2>
+        <p class="mb-4">Tailwind CSS v4 introduces comprehensive 3D transform utilities:</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Basic 3D Transforms</h3>
+                <div class="perspective-distant h-64 bg-gray-100 p-4 rounded-lg flex justify-center items-center">
+                    <div class="bg-blue-500 text-white p-6 rounded transform-3d rotate-x-30 rotate-y-45 shadow-xl">
+                        <span class="text-lg font-bold">3D Card</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Using <code>perspective-distant</code>, <code>transform-3d</code>, <code>rotate-x-30</code>, and
+                    <code>rotate-y-45</code>
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-3">3D Card Flip Animation</h3>
+                <div class="perspective-distant h-64 bg-gray-100 p-4 rounded-lg flex justify-center items-center">
+                    <div class="group relative w-48 h-48">
+                        <div
+                            class="absolute inset-0 transform-3d rotate-y-0 group-hover:rotate-y-180 transition duration-700 ease-in-out backface-hidden">
+                            <div
+                                class="w-full h-full bg-blue-500 text-white p-6 rounded flex items-center justify-center">
+                                <span class="text-lg font-bold">Front Side</span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 transform-3d rotate-y-180 group-hover:rotate-y-0 transition duration-700 ease-in-out backface-hidden">
+                            <div
+                                class="w-full h-full bg-violet-500 text-white p-6 rounded flex items-center justify-center">
+                                <span class="text-lg font-bold">Back Side</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Hover to see the card flip with <code>rotate-y-180</code>, <code>backface-hidden</code> and
+                    transitions
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Enhanced Gradient Features -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Enhanced Gradient Features</h2>
+        <p class="mb-4">Tailwind CSS v4 adds support for radial, conic, and more complex gradients:</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <h3 class="font-semibold mb-2">Linear Gradient with Angle</h3>
+                <div class="h-40 rounded-lg bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 shadow-md"></div>
+                <p class="text-sm text-gray-600 mt-1">
+                    <code>bg-linear-45</code> with three color stops
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-2">Radial Gradient</h3>
+                <div class="h-40 rounded-lg bg-radial from-amber-300 to-orange-500 shadow-md"></div>
+                <p class="text-sm text-gray-600 mt-1">
+                    <code>bg-radial</code> with two color stops
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-2">Conic Gradient</h3>
+                <div class="h-40 rounded-lg bg-conic from-red-500 via-purple-500 via-blue-500 to-emerald-500 shadow-md">
+                </div>
+                <p class="text-sm text-gray-600 mt-1">
+                    <code>bg-conic</code> with multiple color stops
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div>
+                <h3 class="font-semibold mb-2">Custom Gradient Position</h3>
+                <div class="h-40 rounded-lg bg-radial-[at_25%_25%] from-white to-zinc-900 shadow-md"></div>
+                <p class="text-sm text-gray-600 mt-1">
+                    <code>bg-radial-[at_25%_25%]</code> with positioned center
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-2">Gradient Interpolation Color Space</h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <div class="h-20 rounded-lg bg-linear-to-r/srgb from-blue-600 to-red-600 shadow-md"></div>
+                        <p class="text-xs text-gray-600 mt-1">
+                            <code>bg-linear-to-r/srgb</code> (sRGB color space)
+                        </p>
+                    </div>
+                    <div>
+                        <div class="h-20 rounded-lg bg-linear-to-r/oklch from-blue-600 to-red-600 shadow-md"></div>
+                        <p class="text-xs text-gray-600 mt-1">
+                            <code>bg-linear-to-r/oklch</code> (OKLCH color space)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. @starting-style Support -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">@starting-style Support</h2>
+        <p class="mb-4">Tailwind CSS v4 adds support for <code>@starting-style</code> animations using the
+            <code>starting:</code> variant:</p>
+
+        <div class="flex justify-center my-6">
+            <div id="demo-popup" popover
+                class="hidden max-w-md w-full p-6 bg-white rounded-lg shadow-lg transition duration-300 ease-in-out transform starting:opacity-0 starting:scale-95">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold">Welcome Message</h3>
+                    <button popovertarget="demo-popup" class="text-gray-500 hover:text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <p>This popup uses <code>starting:opacity-0</code> and <code>starting:scale-95</code> to animate as it
+                    appears, without any JavaScript.</p>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <button popovertarget="demo-popup" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                Show Popup
+            </button>
+        </div>
+
+        <p class="text-sm text-gray-600 mt-4 text-center">
+            Note: <code>@starting-style</code> requires modern browser support (Chrome 116+, Safari 16.5+).
+        </p>
+    </div>
+
+    <!-- 4. Not Variant -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Not Variant</h2>
+        <p class="mb-4">Tailwind CSS v4 introduces the <code>not-*</code> variant for negating other variants:</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Hover State Negation</h3>
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded not-hover:opacity-75">
+                        Not Hover Button
+                    </button>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>not-hover:opacity-75</code> applies opacity except on hover
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Feature Support Negation</h3>
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <div
+                        class="not-supports-[container-type]:border not-supports-[container-type]:border-red-500 not-supports-[container-type]:p-4 rounded-lg">
+                        This has a border only if container queries are not supported
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>not-supports-[container-type]:</code> styles for when a feature isn't supported
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. New Utility Classes -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">New Utility Classes</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+            <!-- Inset Shadows & Rings -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Inset Shadows & Rings</h3>
+                <div class="space-y-4">
+                    <div
+                        class="h-24 bg-white rounded-lg p-4 flex items-center justify-center inset-shadow-lg border border-gray-200">
+                        <span class="font-medium">inset-shadow-lg</span>
+                    </div>
+                    <div
+                        class="h-24 bg-white rounded-lg p-4 flex items-center justify-center inset-ring inset-ring-blue-500 border border-gray-200">
+                        <span class="font-medium">inset-ring inset-ring-blue-500</span>
+                    </div>
+                    <div
+                        class="h-24 bg-white rounded-lg p-4 flex items-center justify-center shadow-lg inset-shadow-md border border-gray-200">
+                        <span class="font-medium">shadow-lg + inset-shadow-md</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Field Sizing -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Field Sizing</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block mb-1 font-medium">Auto-sizing textarea (field-sizing-content):</label>
+                        <textarea class="w-full border border-gray-300 rounded-md p-2 field-sizing-content" rows="2"
+                            placeholder="Type here, and I'll grow automatically..."></textarea>
+                        <p class="text-xs text-gray-500">Try typing multiple lines</p>
+                    </div>
+
+                    <div>
+                        <label class="block mb-1 font-medium">Fixed textarea (normal):</label>
+                        <textarea class="w-full border border-gray-300 rounded-md p-2" rows="2"
+                            placeholder="I stay the same size..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Color Scheme -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Color Scheme Control</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div
+                        class="color-scheme-light bg-white p-4 rounded-lg border border-gray-200 overflow-y-scroll h-48">
+                        <h4 class="font-medium mb-2">Light Scheme</h4>
+                        <p class="mb-20">This container always uses the light color scheme, regardless of system
+                            preferences.</p>
+                        <p class="text-sm">Scroll to see scrollbar style</p>
+                        <div class="h-40"></div>
+                    </div>
+                    <div class="color-scheme-dark bg-gray-800 text-white p-4 rounded-lg overflow-y-scroll h-48">
+                        <h4 class="font-medium mb-2">Dark Scheme</h4>
+                        <p class="mb-20">This container always uses the dark color scheme, regardless of system
+                            preferences.</p>
+                        <p class="text-sm">Scroll to see scrollbar style</p>
+                        <div class="h-40"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Font Stretch -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Font Stretch Control</h3>
+                <div class="space-y-3 p-4 bg-gray-100 rounded-lg">
+                    <p class="font-stretch-ultra-condensed">Ultra Condensed Text</p>
+                    <p class="font-stretch-condensed">Condensed Text</p>
+                    <p class="font-stretch-normal">Normal Text</p>
+                    <p class="font-stretch-expanded">Expanded Text</p>
+                    <p class="font-stretch-ultra-expanded">Ultra Expanded Text</p>
+                    <p class="text-sm text-gray-600 mt-2">
+                        Note: Requires a variable font with width axis support
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. New State Variants -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">New State Variants</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Inert Variant -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Inert Variant</h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-gray-100 rounded-lg">
+                        <div class="inert:opacity-50 inert:bg-gray-200 inert:select-none p-4 bg-white rounded border"
+                            id="inert-demo">
+                            <p>This content can be toggled as inert.</p>
+                            <input type="text" class="mt-2 border p-1" placeholder="Try to type here...">
+                        </div>
+                        <div class="mt-4">
+                            <button onclick="document.getElementById('inert-demo').toggleAttribute('inert')"
+                                class="px-3 py-1 bg-blue-500 text-white rounded">
+                                Toggle inert
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>inert:opacity-50</code> styles apply when element has the inert attribute
+                </p>
+            </div>
+
+            <!-- nth-* Variants -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">nth-* Variants</h3>
+                <div class="space-y-1">
+                    <div class="nth-odd:bg-blue-100 nth-even:bg-gray-100">
+                        <div class="p-3 rounded">Row 1</div>
+                        <div class="p-3 rounded">Row 2</div>
+                        <div class="p-3 rounded">Row 3</div>
+                        <div class="p-3 rounded">Row 4</div>
+                        <div class="p-3 rounded">Row 5</div>
+                        <div class="p-3 rounded">Row 6</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>nth-odd:bg-blue-100</code> and <code>nth-even:bg-gray-100</code> for zebra striping
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+            <!-- in-* Variant (Implicit Groups) -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">in-* Variant (Implicit Groups)</h3>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <ul class="space-y-2">
+                        <li class="in-hover:bg-gray-200 rounded p-2">
+                            <span class="block">Parent item</span>
+                            <span class="text-sm text-gray-500 in-hover:text-blue-500">Child text that changes on parent
+                                hover</span>
+                        </li>
+                        <li class="in-hover:bg-gray-200 rounded p-2">
+                            <span class="block">Another parent</span>
+                            <span class="text-sm text-gray-500 in-hover:text-blue-500">More text that changes</span>
+                        </li>
+                    </ul>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>in-hover:text-blue-500</code> targets elements when any ancestor is hovered
+                </p>
+            </div>
+
+            <!-- Descendant Variant -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Descendant Variant</h3>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <div class="*:mb-2 *:p-2 *:rounded *:border *:border-gray-200 *:bg-white">
+                        <p>This paragraph has spacing and borders</p>
+                        <p>So does this one</p>
+                        <p>And this one too!</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>*:mb-2 *:p-2</code> applies styles to all direct children
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Dynamic Utility Values -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Dynamic Utility Values</h2>
+        <p class="mb-4">Tailwind CSS v4 allows many utilities to accept any numeric value without arbitrary syntax:</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Dynamic Grid Columns -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Dynamic Grid Columns</h3>
+                <div class="grid grid-cols-15 gap-1 bg-gray-100 p-2 rounded-lg">
+                    <!-- Create 15 small grid cells -->
+                    <div class="bg-blue-200 p-1 text-center text-xs">1</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">2</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">3</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">4</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">5</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">6</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">7</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">8</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">9</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">10</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">11</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">12</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">13</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">14</div>
+                    <div class="bg-blue-200 p-1 text-center text-xs">15</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>grid-cols-15</code> creates a 15-column grid without arbitrary values
+                </p>
+            </div>
+
+            <!-- Dynamic Data Attributes -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Dynamic Data Attributes</h3>
+                <div class="space-y-2">
+                    <div class="flex space-x-2">
+                        <button class="px-3 py-1 bg-gray-200 rounded data-active:bg-blue-500 data-active:text-white"
+                            data-active="true">Active Tab</button>
+                        <button
+                            class="px-3 py-1 bg-gray-200 rounded data-active:bg-blue-500 data-active:text-white">Inactive
+                            Tab</button>
+                        <button
+                            class="px-3 py-1 bg-gray-200 rounded data-active:bg-blue-500 data-active:text-white">Inactive
+                            Tab</button>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>data-active:bg-blue-500</code> targets elements with data-active attribute
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+            <!-- Dynamic Spacing Values -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Dynamic Spacing Values</h3>
+                <div class="space-y-2">
+                    <div class="p-4 bg-gray-100 rounded-lg flex items-center space-x-4">
+                        <div class="w-17 h-17 bg-purple-200 rounded flex items-center justify-center">w-17</div>
+                        <div class="mt-13 mb-7 w-8 h-8 bg-green-200 rounded flex items-center justify-center">mt-13
+                        </div>
+                        <div class="px-9 py-3 bg-yellow-200 rounded flex items-center justify-center">px-9</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>w-17</code>, <code>mt-13</code>, and <code>px-9</code> use dynamic spacing values
+                </p>
+            </div>
+
+            <!-- Dynamic Opacity Values -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Dynamic Opacity Values</h3>
+                <div class="grid grid-cols-3 gap-2 p-4 bg-gray-100 rounded-lg">
+                    <div class="bg-blue-500/33 p-4 rounded text-center text-white font-bold">33%</div>
+                    <div class="bg-blue-500/67 p-4 rounded text-center text-white font-bold">67%</div>
+                    <div class="bg-blue-500/83 p-4 rounded text-center text-white font-bold">83%</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>bg-blue-500/33</code>, <code>bg-blue-500/67</code>, etc. without arbitrary syntax
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. CSS-First Configuration -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">CSS-First Configuration</h2>
+        <p class="mb-4">In Tailwind CSS v4, configuration moves from JavaScript to CSS:</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Theme Variables Demo -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Theme CSS Variables</h3>
+                <div class="p-6 bg-gray-100 rounded-lg space-y-4">
+                    <div class="p-4 rounded" style="background-color: var(--color-blue-500);">
+                        <span class="text-white font-medium">This uses var(--color-blue-500)</span>
+                    </div>
+                    <div class="p-4 rounded" style="background-color: var(--color-emerald-400);">
+                        <span class="text-white font-medium">This uses var(--color-emerald-400)</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    All theme values are available as CSS variables
+                </p>
+            </div>
+
+            <!-- CSS Configuration Example -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">CSS Configuration Example</h3>
+                <pre class="bg-gray-800 text-gray-200 p-3 rounded-lg text-sm overflow-x-auto">
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Satoshi", sans-serif;
+  --breakpoint-3xl: 1920px;
+  --color-brand-100: oklch(0.99 0 0);
+  --color-brand-500: oklch(0.84 0.18 117.33);
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+}
+
+@utility btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+@custom-variant hocus (&:hover, &:focus) {
+  /* Creates a custom variant for hover+focus */
+}
+</pre>
+                <p class="text-sm text-gray-600 mt-2">
+                    Configure theme values, create utilities, and define variants directly in CSS
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

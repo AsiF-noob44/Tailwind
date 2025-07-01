@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Advanced Flex - Tailwind v4</title>
+</head>
+
+<body class="bg-gray-50 p-6">
+    <h1 class="text-3xl font-bold mb-8 text-center">Advanced Flex Features in Tailwind CSS v4</h1>
+
+    <!-- NEW: Container Context-Aware Flexbox -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Container Context-Aware Flexbox</h2>
+        <p class="mb-4">Flex layouts that adapt based on their container width rather than viewport:</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+            <!-- Demo 1: Container query flex direction -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Container-Based Direction Change</h3>
+                <div class="@container border border-gray-200 p-4 rounded-lg">
+                    <div class="@md:flex @md:flex-row @sm:flex-col gap-4">
+                        <div class="bg-blue-100 p-4 rounded mb-4 @md:mb-0">
+                            <h4 class="font-bold">Container Item 1</h4>
+                            <p class="text-sm">
+                                Resize the browser or container to see this flex direction change
+                            </p>
+                        </div>
+                        <div class="bg-blue-100 p-4 rounded">
+                            <h4 class="font-bold">Container Item 2</h4>
+                            <p class="text-sm">
+                                At smaller container sizes, these stack vertically
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Using <code>@container</code>, <code>@sm:flex-col</code> and <code>@md:flex-row</code>
+                </p>
+            </div>
+
+            <!-- Demo 2: Container-based justify-content -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Container-Based Justification</h3>
+                <div class="@container border border-gray-200 p-4 rounded-lg">
+                    <div class="flex flex-wrap @sm:justify-start @md:justify-center @lg:justify-between gap-2">
+                        <div class="bg-violet-100 p-3 rounded">Item 1</div>
+                        <div class="bg-violet-100 p-3 rounded">Item 2</div>
+                        <div class="bg-violet-100 p-3 rounded">Item 3</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Justification changes based on container width: <code>justify-start</code> →
+                    <code>justify-center</code> → <code>justify-between</code>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Logical Property Flex Ordering -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Logical Property Flex Ordering</h2>
+        <p class="mb-4">Direction-aware flex ordering for better internationalization support:</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+            <!-- LTR Demo -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">LTR (Left-to-Right) Layout</h3>
+                <div dir="ltr" class="border border-gray-200 p-4 rounded-lg">
+                    <div class="flex flex-row gap-2 mb-2">
+                        <div class="p-2 bg-green-100 order-last">Last</div>
+                        <div class="p-2 bg-green-100 order-first">First</div>
+                        <div class="p-2 bg-green-100">Default</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>order-first</code> places item at start, <code>order-last</code> at end
+                </p>
+            </div>
+
+            <!-- RTL Demo -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">RTL (Right-to-Left) Layout</h3>
+                <div dir="rtl" class="border border-gray-200 p-4 rounded-lg">
+                    <div class="flex flex-row gap-2 mb-2">
+                        <div class="p-2 bg-green-100 order-last">Last (آخر)</div>
+                        <div class="p-2 bg-green-100 order-first">First (أول)</div>
+                        <div class="p-2 bg-green-100">Default (افتراضي)</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    With RTL, <code>order-first</code> is on right, <code>order-last</code> on left
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Advanced Alignment Combinations -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Advanced Flex Alignment Combinations</h2>
+        <p class="mb-4">More complex combinations of flex alignment in v4:</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Baseline alignment demo -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Baseline Alignment</h3>
+                <div class="flex items-baseline bg-gray-100 h-32 p-4 rounded-lg">
+                    <div class="p-2 bg-pink-100 text-sm">Small text</div>
+                    <div class="p-2 bg-pink-100 text-xl">Medium text</div>
+                    <div class="p-2 bg-pink-100 text-3xl">Large text</div>
+                    <div class="p-2 bg-pink-100 text-5xl">Huge text</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    <code>items-baseline</code> aligns text baselines regardless of size
+                </p>
+            </div>
+
+            <!-- Content distribution with gap -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Content Distribution with Gap</h3>
+                <div
+                    class="flex flex-wrap justify-evenly content-around gap-x-4 gap-y-8 bg-gray-100 h-64 p-4 rounded-lg">
+                    <div class="p-3 bg-yellow-100 w-24">Item 1</div>
+                    <div class="p-3 bg-yellow-100 w-24">Item 2</div>
+                    <div class="p-3 bg-yellow-100 w-24">Item 3</div>
+                    <div class="p-3 bg-yellow-100 w-24">Item 4</div>
+                    <div class="p-3 bg-yellow-100 w-24">Item 5</div>
+                    <div class="p-3 bg-yellow-100 w-24">Item 6</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Combines <code>justify-evenly</code>, <code>content-around</code> with different gaps
+                    (<code>gap-x-4</code> and <code>gap-y-8</code>)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Responsive & Arbitrary Flex Values -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Arbitrary Flex Values</h2>
+        <p class="mb-4">Using arbitrary values for flex properties in v4:</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+            <!-- Arbitrary flex grow values -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Arbitrary Grow Ratios</h3>
+                <div class="flex bg-gray-100 p-4 rounded-lg gap-2">
+                    <div class="p-3 bg-indigo-100 grow-[2]">Grow 2×</div>
+                    <div class="p-3 bg-indigo-100 grow-[1]">Grow 1×</div>
+                    <div class="p-3 bg-indigo-100 grow-[3]">Grow 3×</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Using arbitrary values: <code>grow-[2]</code>, <code>grow-[1]</code>, <code>grow-[3]</code>
+                </p>
+            </div>
+
+            <!-- Arbitrary flex-basis values -->
+            <div>
+                <h3 class="text-xl font-semibold mb-3">Arbitrary Basis Values</h3>
+                <div class="flex bg-gray-100 p-4 rounded-lg">
+                    <div class="p-3 bg-teal-100 basis-[15%]">15%</div>
+                    <div class="p-3 bg-teal-100 basis-[35%]">35%</div>
+                    <div class="p-3 bg-teal-100 basis-[50%]">50%</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Using <code>basis-[15%]</code>, <code>basis-[35%]</code>, <code>basis-[50%]</code>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Flex + Grid Hybrid Layouts -->
+    <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Flex + Grid Hybrid Layouts</h2>
+        <p class="mb-4">Combining flex and grid for complex layouts:</p>
+
+        <div class="border border-gray-200 p-4 rounded-lg mb-6">
+            <div class="grid grid-cols-12 gap-4">
+                <header class="col-span-12 bg-slate-200 p-4 flex justify-between items-center rounded">
+                    <h3 class="font-bold">Header with Flex</h3>
+                    <div class="flex gap-2">
+                        <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm">Sign In</button>
+                        <button class="bg-gray-200 px-3 py-1 rounded text-sm">Register</button>
+                    </div>
+                </header>
+
+                <aside class="col-span-12 sm:col-span-4 lg:col-span-3 bg-slate-100 p-4 rounded">
+                    <nav class="flex flex-col gap-2">
+                        <a href="#" class="p-2 bg-white rounded">Home</a>
+                        <a href="#" class="p-2 bg-white rounded">About</a>
+                        <a href="#" class="p-2 bg-white rounded">Services</a>
+                        <a href="#" class="p-2 bg-white rounded">Contact</a>
+                    </nav>
+                </aside>
+
+                <main class="col-span-12 sm:col-span-8 lg:col-span-9 bg-slate-50 p-4 rounded">
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-white p-4 rounded shadow-sm">
+                            <h4 class="font-bold mb-2">Article Title</h4>
+                            <p class="text-sm">This layout combines grid for the overall structure and flexbox for
+                                components.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="grow basis-64 bg-white p-4 rounded shadow-sm">Card 1</div>
+                            <div class="grow basis-64 bg-white p-4 rounded shadow-sm">Card 2</div>
+                            <div class="grow basis-64 bg-white p-4 rounded shadow-sm">Card 3</div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <p class="text-gray-600">
+            This hybrid layout uses grid for the page structure and flexbox for component layouts within each section.
+            The sidebar and main content areas resize responsively, and the cards use <code>grow</code> with
+            <code>basis-64</code> to create a responsive card layout.
+        </p>
+    </div>
+
+    <!-- Reference Section -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Additional v4 Flex Features Reference</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Flex Basis Classes</h3>
+                <pre class="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
+basis-0        flex-basis: 0px;
+basis-px       flex-basis: 1px;
+basis-0.5      flex-basis: 0.125rem; /* 2px */
+basis-1        flex-basis: 0.25rem; /* 4px */
+basis-1.5      flex-basis: 0.375rem; /* 6px */
+basis-2        flex-basis: 0.5rem; /* 8px */
+basis-2.5      flex-basis: 0.625rem; /* 10px */
+basis-3        flex-basis: 0.75rem; /* 12px */
+basis-3.5      flex-basis: 0.875rem; /* 14px */
+basis-4        flex-basis: 1rem; /* 16px */
+basis-1/2      flex-basis: 50%;
+basis-1/3      flex-basis: 33.333333%;
+basis-2/3      flex-basis: 66.666667%;
+basis-1/4      flex-basis: 25%;
+basis-2/4      flex-basis: 50%;
+basis-3/4      flex-basis: 75%;
+basis-1/5      flex-basis: 20%;
+basis-auto     flex-basis: auto;
+basis-full     flex-basis: 100%;
+basis-[15%]    flex-basis: 15%; /* Arbitrary value */
+</pre>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Flex with Logical Properties</h3>
+                <pre class="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
+/* Justify Content Logical Properties */
+justify-start      justify-content: flex-start;
+justify-end        justify-content: flex-end;
+justify-center     justify-content: center;
+justify-between    justify-content: space-between;
+justify-around     justify-content: space-around;
+justify-evenly     justify-content: space-evenly;
+
+/* Items Alignment */
+items-start        align-items: flex-start;
+items-end          align-items: flex-end;
+items-center       align-items: center;
+items-baseline     align-items: baseline;
+items-stretch      align-items: stretch;
+
+/* Gap Support */
+gap-x-{size}       row-gap: {size};
+gap-y-{size}       column-gap: {size};
+gap-{size}         gap: {size};
+</pre>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
