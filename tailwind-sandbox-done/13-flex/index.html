@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Flex</title>
+</head>
+
+<body>
+  <!-- Flex and alignment -->
+  <div class="flex flex-wrap h-72 w-100 bg-gray-100 justify-around items-center">
+    <div class="p-10 border border-blue-600 bg-blue-100">01</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">02</div>
+    <div class="self-start p-10 border border-blue-600 bg-blue-100">03</div>
+    <div class="self-end p-10 border border-blue-600 bg-blue-100">04</div>
+  </div>
+
+  <!-- Flex Column, Gap and Order -->
+  <div class="flex flex-col gap-4 w-100 bg-gray-200 justify-around items-center">
+    <div class="order-4 p-10 border border-blue-600 bg-blue-100">01</div>
+    <div class="order-1 p-10 border border-blue-600 bg-blue-100">02</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">03</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">04</div>
+  </div>
+
+  <!-- Grow and shrink -->
+  <div class="flex w-100 bg-gray-300">
+    <!-- flex-none: Prevent item from growing or shrinking -->
+    <div class="w-64 flex-none p-10 border border-blue-600 bg-blue-100">
+      01
+    </div>
+    <!-- flex-initial:  Allow item to shrink but not grow, taking into account its initial size  -->
+    <div class="w-64 flex-initial p-10 border border-blue-600 bg-blue-100">
+      02
+    </div>
+    <!-- flex-auto: Allow item to grow and shrink, taking into account its initial size -->
+    <div class="w-64 flex-auto p-10 border border-blue-600 bg-blue-100">
+      03
+    </div>
+    <!-- flex-1: Allow item to grow and shrink as needed, ignoring its initial size -->
+    <div class="w-64 flex-1 p-10 border border-blue-600 bg-blue-100">04</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">05</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">06</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">07</div>
+  </div>
+
+  <!-- TAILWIND CSS v4 FLEX UPDATES -->
+  <div class="mt-8 p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Tailwind CSS v4 Flex Updates</h2>
+
+    <!-- Flex with logical properties -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Logical Properties for Flex (New in v4)
+      </h3>
+      <p class="mb-4">
+        Tailwind CSS v4 uses logical properties for flex layouts:
+      </p>
+
+      <div class="grid grid-cols-2 gap-6 mb-4">
+        <div>
+          <p class="font-medium mb-2">v3 Properties:</p>
+          <div class="flex space-s-4 mb-2 bg-gray-100 p-2">
+            <div class="p-2 bg-blue-100">Item 1</div>
+            <div class="p-2 bg-blue-100">Item 2</div>
+            <div class="ms-auto p-2 bg-blue-100">Pushed end</div>
+          </div>
+        </div>
+        <div>
+          <p class="font-medium mb-2">v4 Logical Properties:</p>
+          <div class="flex space-s-4 mb-2 bg-gray-100 p-2">
+            <div class="p-2 bg-blue-100">Item 1</div>
+            <div class="p-2 bg-blue-100">Item 2</div>
+            <div class="ms-auto p-2 bg-blue-100">Logical start margin</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600">
+        In v4, <code>ms-auto</code> replaces <code>ml-auto</code> for RTL language support.
+        Similarly, <code>me-auto</code> replaces <code>mr-auto</code>.
+      </p>
+    </div>
+
+    <!-- Flex with container queries -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Flex with Container Queries</h3>
+
+      <div class="@container border p-4 rounded-lg">
+        <div class="@md:flex @md:flex-row @sm:flex-col gap-4">
+          <div class="bg-blue-100 p-4 rounded mb-4 @md:mb-0">
+            <h4 class="font-bold">Item 1</h4>
+            <p>
+              This container switches between column and row layout based on its own width
+            </p>
+          </div>
+          <div class="bg-blue-100 p-4 rounded">
+            <h4 class="font-bold">Item 2</h4>
+            <p>
+              The container query makes this layout more flexible than media queries
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-2">
+        Container queries with flex layouts allow components to adapt to their container width,
+        not just the viewport width.
+      </p>
+    </div>
+
+    <!-- Enhanced flex distribution -->
+    <div>
+      <h3 class="text-xl font-semibold mb-2">Enhanced Flex Distribution</h3>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <p class="font-medium mb-2">Flex with gap:</p>
+          <div class="flex gap-4 bg-gray-100 p-2 rounded">
+            <div class="p-2 bg-green-100 flex-1">1</div>
+            <div class="p-2 bg-green-100 flex-1">2</div>
+            <div class="p-2 bg-green-100 flex-1">3</div>
+          </div>
+          <p class="text-sm text-gray-600 mt-1">
+            Using <code>gap-4</code> for consistent spacing
+          </p>
+        </div>
+        <div>
+          <p class="font-medium mb-2">Flex grow/shrink:</p>
+          <div class="flex bg-gray-100 p-2 rounded gap-2">
+            <div class="p-2 bg-red-100 grow-0">Fixed</div>
+            <div class="p-2 bg-red-100 grow">Grow</div>
+            <div class="p-2 bg-red-100 grow-0">Fixed</div>
+          </div>
+          <p class="text-sm text-gray-600 mt-1">
+            Using <code>grow</code>/<code>grow-0</code> properties
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- Flex Direction Properties in v4
+  flex-row	        flex-direction: row;
+  flex-row-reverse	flex-direction: row-reverse;
+  flex-col	        flex-direction: column;
+  flex-col-reverse	flex-direction: column-reverse;
+-->
+
+<!-- Flex Wrap Properties in v4
+  flex-wrap	        flex-wrap: wrap;
+  flex-wrap-reverse	flex-wrap: wrap-reverse;
+  flex-nowrap	      flex-wrap: nowrap;
+-->
+
+<!-- Flex Properties in v4
+  flex-none	    flex: none;     
+  Prevent item from growing or shrinking
+
+  flex-initial	flex: 0 1 auto; 
+  Allow item to shrink but not grow, taking into account its initial size
+
+  flex-auto	    flex: 1 1 auto; 
+  Allow item to grow and shrink, taking into account its initial size
+
+  flex-1	      flex: 1 1 0%;   
+  Allow item to grow and shrink as needed, ignoring its initial size
+  
+  grow         flex-grow: 1;
+  grow-0       flex-grow: 0;
+  shrink       flex-shrink: 1;
+  shrink-0     flex-shrink: 0;
+-->

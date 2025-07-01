@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'spin-slow': 'spin 3s linear infinite',
+            wiggle: 'wiggle 1s ease-in-out infinite',
+          },
+          keyframes: {
+            wiggle: {
+              '0%, 100%': { transform: 'rotate(-12deg)' },
+              '50%': { transform: 'rotate(12deg)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <title>Animation</title>
+</head>
+
+<body>
+  <div class="flex items-center justify-center min-h-screen bg-slate-900">
+    <svg class="animate-wiggle w-48 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+      </path>
+    </svg>
+  </div>
+
+  <!-- TAILWIND CSS v4 ANIMATION UPDATES -->
+  <div class="mt-8 p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Tailwind CSS v4 Animation Updates</h2>
+
+    <!-- Animation direction and fill mode -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Animation Direction & Fill Mode</h3>
+      <p class="mb-4">Tailwind CSS v4 adds control over animation direction and fill mode:</p>
+
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <p class="font-medium mb-2">Normal direction:</p>
+          <div class="w-16 h-16 bg-blue-300 mx-auto animate-bounce"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">animation-direction-normal</p>
+        </div>
+
+        <div>
+          <p class="font-medium mb-2">Reverse direction:</p>
+          <div class="w-16 h-16 bg-blue-300 mx-auto animate-bounce animation-direction-reverse"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">animation-direction-reverse</p>
+        </div>
+
+        <div>
+          <p class="font-medium mb-2">Alternate direction:</p>
+          <div class="w-16 h-16 bg-blue-300 mx-auto animate-bounce animation-direction-alternate"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">animation-direction-alternate</p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-3 gap-6">
+        <div>
+          <p class="font-medium mb-2">Fill none:</p>
+          <div class="w-16 h-16 bg-green-300 mx-auto animate-pulse animation-fill-none"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">animation-fill-none</p>
+        </div>
+
+        <div>
+          <p class="font-medium mb-2">Fill forwards:</p>
+          <div class="w-16 h-16 bg-green-300 mx-auto animate-pulse animation-fill-forwards"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">animation-fill-forwards</p>
+        </div>
+
+        <div>
+          <p class="font-medium mb-2">Fill both:</p>
+          <div class="w-16 h-16 bg-green-300 mx-auto animate-pulse animation-fill-both"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">animation-fill-both</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animation timeline -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Animation Timeline (New in v4)</h3>
+
+      <div class="relative h-64 border rounded-lg overflow-hidden">
+        <!-- Scroll container -->
+        <div class="h-full overflow-auto">
+          <div class="h-[400px] p-4">
+            <h4 class="font-bold mb-2">Scroll down to see animation</h4>
+            <p class="mb-4">The animation is tied to the scroll position of this container.</p>
+
+            <!-- Animation element -->
+            <div class="w-24 h-24 bg-purple-400 rounded-full mx-auto my-12
+                         animation-timeline-scroll animation-range-entry animation-fill-both"
+              style="animation-name: fadeInScale">
+            </div>
+
+            <div class="h-64"></div>
+            <p class="mb-4">The animation-timeline-scroll utility ties animations to scroll position.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-2">
+        The <code>animation-timeline-scroll</code> and <code>animation-range-entry</code> utilities
+        allow animations to be driven by scroll position.
+      </p>
+    </div>
+
+    <!-- Reduced motion -->
+    <div>
+      <h3 class="text-xl font-semibold mb-2">Animation Accessibility</h3>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <p class="font-medium mb-2">Motion-safe animation:</p>
+          <div class="w-16 h-16 bg-red-300 mx-auto motion-safe:animate-spin"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">
+            Only animates when reduced motion is not enabled
+          </p>
+        </div>
+
+        <div>
+          <p class="font-medium mb-2">Reduced motion alternative:</p>
+          <div class="w-16 h-16 bg-red-300 mx-auto motion-safe:animate-spin motion-reduce:animate-pulse"></div>
+          <p class="text-sm text-gray-600 mt-1 text-center">
+            Uses pulse instead of spin when reduced motion is enabled
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</body>
+
+</html>
+
+<!-- Animation Properties in v4
+  animate-none	            animation: none;
+  animate-spin	            animation: spin 1s linear infinite;
+  animate-ping	            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animate-pulse	          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animate-bounce	          animation: bounce 1s infinite;
+-->
+
+<!-- Animation Direction in v4 (New)
+  animation-direction-normal	        animation-direction: normal;
+  animation-direction-reverse	        animation-direction: reverse;
+  animation-direction-alternate	      animation-direction: alternate;
+  animation-direction-alternate-reverse	animation-direction: alternate-reverse;
+-->
+
+<!-- Animation Fill Mode in v4 (New)
+  animation-fill-none	      animation-fill-mode: none;
+  animation-fill-forwards	  animation-fill-mode: forwards;
+  animation-fill-backwards	  animation-fill-mode: backwards;
+  animation-fill-both	      animation-fill-mode: both;
+-->
+
+<!-- Animation Timeline in v4 (New)
+  animation-timeline-auto	          animation-timeline: auto;
+  animation-timeline-none	          animation-timeline: none;
+  animation-timeline-scroll	        animation-timeline: scroll();
+  animation-timeline-view	          animation-timeline: view();
+-->
+
+<!-- Animation Range in v4 (New)
+  animation-range-entry	    animation-range: entry;
+  animation-range-exit	    animation-range: exit;
+  animation-range-cover	    animation-range: cover;
+  animation-range-contain	  animation-range: contain;
+-->

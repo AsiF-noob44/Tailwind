@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Grid</title>
+</head>
+
+<body>
+  <!-- Grid cols and rows -->
+  <div class="grid grid-cols-3 grid-rows-4 gap-4 w-100 bg-gray-100">
+    <div class="p-10 border border-blue-600 bg-blue-100">01</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">02</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">03</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">04</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">05</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">06</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">07</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">08</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">09</div>
+  </div>
+
+  <!-- Col and row span -->
+  <div class="grid grid-cols-3 gap-4 w-100 bg-gray-100">
+    <div class="col-span-2 row-span-2 p-10 border border-blue-600 bg-blue-100">
+      01
+    </div>
+    <div class="p-10 border border-blue-600 bg-blue-100">02</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">03</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">04</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">05</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">06</div>
+    <div class="col-span-3 p-10 border border-blue-600 bg-blue-100">07</div>
+    <div class="p-10 border border-blue-600 bg-blue-100">08</div>
+    <div class="col-span-2 p-10 border border-blue-600 bg-blue-100">09</div>
+  </div>
+
+  <!-- TAILWIND CSS v4 GRID UPDATES -->
+  <div class="mt-8 p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Tailwind CSS v4 Grid Updates</h2>
+
+    <!-- Subgrid -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Subgrid (New in v4)</h3>
+      <p class="mb-4">Tailwind CSS v4 adds support for CSS subgrid:</p>
+
+      <div class="grid grid-cols-4 gap-4 bg-gray-100 p-4">
+        <div class="col-span-4 bg-gray-300 p-2 text-center">
+          Parent Grid Header
+        </div>
+
+        <!-- Subgrid example -->
+        <div class="col-span-3 grid grid-cols-subgrid gap-4 bg-blue-50 p-4">
+          <div class="bg-blue-200 p-4">This aligns with parent</div>
+          <div class="bg-blue-300 p-4 col-span-2">
+            This spans 2 columns and aligns with parent grid
+          </div>
+        </div>
+
+        <div class="bg-gray-200 p-4">Parent column</div>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-2">
+        <code>grid-cols-subgrid</code> and <code>grid-rows-subgrid</code> allow
+        child grid layouts to inherit track sizes from parent grid.
+      </p>
+    </div>
+
+    <!-- Named Grid Lines -->
+    <div>
+      <h3 class="text-xl font-semibold mb-2">
+        Named Grid Lines with Arbitrary Values
+      </h3>
+      <p class="mb-4">
+        Tailwind CSS v4 makes it easier to work with named grid lines:
+      </p>
+
+      <div class="grid grid-cols-[main-start_1fr_sidebar-start_300px_main-end] gap-4 bg-gray-100 p-4">
+        <div class="col-[main-start/sidebar-start] bg-purple-200 p-4">
+          Main content area (spans from main-start to sidebar-start)
+        </div>
+        <div class="col-[sidebar-start/main-end] bg-purple-300 p-4">
+          Sidebar area (spans from sidebar-start to main-end)
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-2">
+        Arbitrary values in v4 make it easy to define and use named grid lines
+        and areas.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- 
+  Grid Template Columns
+  grid-cols-1	    grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-cols-2	    grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-cols-3	    grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-cols-4	    grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-cols-5	    grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-cols-6	    grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-cols-7	    grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-cols-8	    grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-cols-9	    grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-cols-10	  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-cols-11	  grid-template-columns: repeat(11, minmax(0, 1fr));
+  grid-cols-12	  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-cols-none	grid-template-columns: none;
+ -->
+
+<!-- Grid Template Rows
+  grid-rows-1	    grid-template-rows: repeat(1, minmax(0, 1fr));
+  grid-rows-2	    grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-rows-3	    grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-rows-4	    grid-template-rows: repeat(4, minmax(0, 1fr));
+  grid-rows-5	    grid-template-rows: repeat(5, minmax(0, 1fr));
+  grid-rows-6	    grid-template-rows: repeat(6, minmax(0, 1fr));
+  grid-rows-none	grid-template-rows: none;
+  -->

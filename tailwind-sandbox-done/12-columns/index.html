@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Columns</title>
+</head>
+
+<body>
+  <div class="columns-2 gap-8">
+    <img class="w-full" src="/assets/img/img1.jpg" />
+    <img class="w-full" src="/assets/img/img2.jpg" />
+    <img class="w-full break-after-column" src="/assets/img/img3.jpg" />
+    <img class="w-full" src="/assets/img/img4.jpg" />
+  </div>
+  <div class="columns-3 gap-24">
+    <img class="w-full" src="/assets/img/img3.jpg" />
+    <img class="w-full break-before-column" src="/assets/img/img4.jpg" />
+    <img class="w-full" src="/assets/img/img5.jpg" />
+    <img class="w-full" src="/assets/img/img6.jpg" />
+    <img class="w-full" src="/assets/img/img7.jpg" />
+  </div>
+  <div class="columns-3xs">
+    <!-- Video Aspect Ratio -->
+    <img class="w-full aspect-video" src="/assets/img/img8.jpg" />
+    <!-- Square Aspect Ratio -->
+    <img class="w-full aspect-square" src="/assets/img/img9.jpg" />
+    <img class="w-full break" src="/assets/img/img1.jpg" />
+    <img class="w-full" src="/assets/img/img2.jpg" />
+  </div>
+
+  <!-- TAILWIND CSS v4 COLUMNS UPDATES -->
+  <div class="mt-8 p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Tailwind CSS v4 Columns Updates</h2>
+
+    <!-- Responsive columns with container queries -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Responsive Columns with Container Queries</h3>
+      <p class="mb-4">Tailwind CSS v4 supports container queries with columns:</p>
+
+      <div class="@container border p-4 rounded-lg">
+        <div class="@md:columns-1 @xl:columns-2 @3xl:columns-3 gap-6 space-y-4">
+          <div class="bg-blue-50 p-4 rounded break-inside-avoid">
+            <h4 class="font-bold mb-2">First Content Block</h4>
+            <p>This content will flow into multiple columns based on the container's width, not just the viewport width.
+              Container queries provide more flexibility than traditional media queries.</p>
+          </div>
+          <div class="bg-blue-50 p-4 rounded break-inside-avoid">
+            <h4 class="font-bold mb-2">Second Content Block</h4>
+            <p>Resize the browser to see how the columns adjust based on the container's width. This allows for more
+              complex and responsive layouts.</p>
+          </div>
+          <div class="bg-blue-50 p-4 rounded break-inside-avoid">
+            <h4 class="font-bold mb-2">Third Content Block</h4>
+            <p>With container queries, components can adapt to their available space regardless of the viewport size.
+            </p>
+          </div>
+          <div class="bg-blue-50 p-4 rounded break-inside-avoid">
+            <h4 class="font-bold mb-2">Fourth Content Block</h4>
+            <p>The columns will change from 1 to 2 to 3 as the container grows wider.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-2">
+        The <code>@container</code> directive creates a container query context, while <code>@[size]:</code> prefixes
+        apply styles conditionally based on container width.
+      </p>
+    </div>
+
+    <!-- Column color improvements -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Column Span with Simplified Syntax</h3>
+
+      <div class="columns-3 gap-4 mb-4">
+        <p class="mb-4">This is a regular paragraph in the first column. It doesn't span any columns.</p>
+        <p class="col-span-all bg-yellow-100 p-2 rounded mb-4">This paragraph spans all columns with the new
+          <code>col-span-all</code> utility in v4.
+        </p>
+        <p class="mb-4">Another regular paragraph that doesn't span columns.</p>
+        <p class="mb-4">One more paragraph to demonstrate the column flow.</p>
+        <p class="col-span-2 bg-green-100 p-2 rounded mb-4">This paragraph spans 2 columns using
+          <code>col-span-2</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Improved break handling -->
+    <div>
+      <h3 class="text-xl font-semibold mb-2">Improved Break Handling</h3>
+
+      <div class="columns-2 gap-4">
+        <div class="mb-4 break-inside-avoid-column bg-gray-100 p-2 rounded">
+          <h4 class="font-bold">Break Inside Avoid</h4>
+          <p>This box won't break in the middle, improving readability. The <code>break-inside-avoid-column</code>
+            utility prevents this element from being split across columns.</p>
+        </div>
+        <div class="mb-4 break-after-column bg-blue-100 p-2 rounded">
+          <h4 class="font-bold">Break After</h4>
+          <p>A column break will occur after this element, forcing the next element to start in a new column.</p>
+        </div>
+        <div class="mb-4 bg-purple-100 p-2 rounded">
+          <h4 class="font-bold">Regular Element</h4>
+          <p>This element appears after the break forced by the previous element.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- Column Classes
+columns-1	      columns: 1;
+columns-2	      columns: 2;
+columns-3	      columns: 3;
+columns-4	      columns: 4;
+columns-5	      columns: 5;
+columns-6	      columns: 6;
+columns-7	      columns: 7;
+columns-8	      columns: 8;
+columns-9	      columns: 9;
+columns-10	    columns: 10;
+columns-11	    columns: 11;
+columns-12	    columns: 12;
+columns-auto	  columns: auto;
+columns-3xs	    columns: 16rem; /* 256px */
+columns-2xs	    columns: 18rem; /* 288px */
+columns-xs	    columns: 20rem; /* 320px */
+columns-sm	    columns: 24rem; /* 384px */
+columns-md	    columns: 28rem; /* 448px */
+columns-lg	    columns: 32rem; /* 512px */
+columns-xl	    columns: 36rem; /* 576px */
+columns-2xl	    columns: 42rem; /* 672px */
+columns-3xl	    columns: 48rem; /* 768px */
+columns-4xl	    columns: 56rem; /* 896px */
+columns-5xl	    columns: 64rem; /* 1024px */
+columns-6xl	    columns: 72rem; /* 1152px */
+columns-7xl	    columns: 80rem; /* 1280px */
+-->
+
+<!-- Break After
+  break-after-auto	break-after: auto;
+  break-after-avoid	break-after: avoid;
+  break-after-all	break-after: all;
+  break-after-avoid-page	break-after: avoid-page;
+  break-after-page	break-after: page;
+  break-after-left	break-after: left;
+  break-after-right	break-after: right;
+  break-after-column	break-after: column;
+-->
+
+<!-- Break Before
+  beak-before-auto	break-before: auto;
+  break-before-avoid	break-before: avoid;
+  break-before-all	break-before: all;
+  break-before-avoid-page	break-before: avoid-page;
+  break-before-page	break-before: page;
+  break-before-left	break-before: left;
+  break-before-right	break-before: right;
+  break-before-column	break-before: column;
+-->

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          transitionDuration: {
+            0: '0ms',
+            2000: '2000ms',
+          },
+        },
+      },
+    }
+  </script>
+  <title>Transform & Transition</title>
+</head>
+
+<body>
+  <!-- No Transition -->
+  <button class="px-8 py-2 m-24 text-white bg-blue-500 rounded hover:bg-blue-700">
+    Click me
+  </button>
+
+  <!-- Transition -->
+  <button class="px-8 py-2 m-24 text-white bg-blue-500 rounded transition-colors duration-700 hover:bg-blue-700">
+    Click me
+  </button>
+
+  <!-- Transition & Transform -->
+  <button
+    class="px-8 py-2 m-24 text-white bg-blue-500 rounded transition ease-in-out delay-150 duration-2000 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500">
+    Click me
+  </button>
+
+  <!-- Transform & Transition -->
+  <img src="../assets/img/img1.jpg" alt=""
+    class="hover:transform hover:rotate-180 hover:scale-75 hover:skew-x-12 transition" />
+
+  <!-- TAILWIND CSS v4 TRANSFORM & TRANSITION UPDATES -->
+  <div class="mt-8 p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Tailwind CSS v4 Transform & Transition Updates</h2>
+
+    <!-- Improved transform handling -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Improved Transform Handling</h3>
+      <p class="mb-4">Tailwind CSS v4 has better transform composition:</p>
+
+      <div class="grid grid-cols-3 gap-6 mb-4">
+        <!-- Scale and rotate combined -->
+        <div>
+          <p class="font-medium mb-2">Combined transforms:</p>
+          <div
+            class="bg-blue-100 w-24 h-24 mx-auto flex items-center justify-center hover:scale-110 hover:rotate-12 transition-all">
+            Hover me
+          </div>
+          <p class="text-sm text-gray-600 mt-1 text-center">scale + rotate</p>
+        </div>
+
+        <!-- Translate and skew -->
+        <div>
+          <p class="font-medium mb-2">Translate + skew:</p>
+          <div
+            class="bg-green-100 w-24 h-24 mx-auto flex items-center justify-center hover:translate-y-2 hover:skew-x-12 transition-all">
+            Hover me
+          </div>
+          <p class="text-sm text-gray-600 mt-1 text-center">translate + skew</p>
+        </div>
+
+        <!-- Complex transform -->
+        <div>
+          <p class="font-medium mb-2">Complex transform:</p>
+          <div
+            class="bg-purple-100 w-24 h-24 mx-auto flex items-center justify-center hover:scale-110 hover:rotate-45 hover:-translate-y-2 transition-all">
+            Hover me
+          </div>
+          <p class="text-sm text-gray-600 mt-1 text-center">scale + rotate + translate</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transition improvements -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-2">Enhanced Transitions</h3>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <p class="font-medium mb-2">Transition timing:</p>
+          <div class="flex gap-4">
+            <div class="w-16 h-16 bg-blue-200 hover:bg-blue-400 transition ease-in-out duration-300">
+              Ease
+            </div>
+            <div class="w-16 h-16 bg-blue-200 hover:bg-blue-400 transition ease-linear duration-300">
+              Linear
+            </div>
+            <div class="w-16 h-16 bg-blue-200 hover:bg-blue-400 transition ease-bounce duration-300">
+              Bounce
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mt-1">Various easing functions</p>
+        </div>
+
+        <div>
+          <p class="font-medium mb-2">Delayed transitions:</p>
+          <div class="flex gap-4">
+            <div class="w-16 h-16 bg-red-200 hover:bg-red-400 transition duration-500">
+              No delay
+            </div>
+            <div class="w-16 h-16 bg-red-200 hover:bg-red-400 transition duration-500 delay-150">
+              Delay 150
+            </div>
+            <div class="w-16 h-16 bg-red-200 hover:bg-red-400 transition duration-500 delay-300">
+              Delay 300
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mt-1">With different delay values</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motion-safe and reduced-motion -->
+    <div>
+      <h3 class="text-xl font-semibold mb-2">Accessibility Improvements</h3>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <p class="font-medium mb-2">Motion-safe transforms:</p>
+          <div
+            class="bg-yellow-100 w-24 h-24 mx-auto flex items-center justify-center motion-safe:hover:rotate-180 transition-transform duration-700">
+            Motion Safe
+          </div>
+          <p class="text-sm text-gray-600 mt-1 text-center">
+            Only rotates if user hasn't enabled reduced motion
+          </p>
+        </div>
+
+        <div>
+          <p class="font-medium mb-2">Reduced motion alternative:</p>
+          <div
+            class="bg-yellow-100 w-24 h-24 mx-auto flex items-center justify-center motion-safe:hover:rotate-180 motion-reduce:hover:scale-110 transition-all duration-700">
+            Alternative
+          </div>
+          <p class="text-sm text-gray-600 mt-1 text-center">
+            Uses scale instead of rotation when reduced motion is enabled
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- Transform Properties in v4 
+  scale-0	      transform: scale(0);
+  scale-x-0	    transform: scaleX(0);
+  scale-y-0	    transform: scaleY(0);
+  scale-50	    transform: scale(.5);
+  scale-x-50	  transform: scaleX(.5);
+  scale-y-50	  transform: scaleY(.5);
+  scale-75	    transform: scale(.75);
+  scale-x-75	  transform: scaleX(.75);
+  scale-y-75	  transform: scaleY(.75);
+  scale-90	    transform: scale(.9);
+  scale-x-90	  transform: scaleX(.9);
+  scale-y-90	  transform: scaleY(.9);
+  scale-95	    transform: scale(.95);
+  scale-x-95	  transform: scaleX(.95);
+  scale-y-95	  transform: scaleY(.95);
+  scale-100	    transform: scale(1);
+  scale-x-100	  transform: scaleX(1);
+  scale-y-100	  transform: scaleY(1);
+  scale-105	    transform: scale(1.05);
+  scale-x-105	  transform: scaleX(1.05);
+  scale-y-105	  transform: scaleY(1.05);
+  scale-110	    transform: scale(1.1);
+  scale-x-110	  transform: scaleX(1.1);
+  scale-y-110	  transform: scaleY(1.1);
+  scale-125	    transform: scale(1.25);
+  scale-x-125	  transform: scaleX(1.25);
+  scale-y-125	  transform: scaleY(1.25);
+  scale-150	    transform: scale(1.5);
+  scale-x-150	  transform: scaleX(1.5);
+  scale-y-150	  transform: scaleY(1.5);
+-->
+
+<!-- Transition Properties in v4
+  transition-none	            transition-property: none;
+  transition-all	            transition-property: all;
+  transition	                transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-colors	          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-opacity	        transition-property: opacity;
+  transition-shadow	          transition-property: box-shadow;
+  transition-transform	      transition-property: transform;
+-->
+
+<!-- Enhanced Accessibility in v4
+  motion-safe:    Only applies styles when user hasn't requested reduced motion
+  motion-reduce:  Only applies styles when user has requested reduced motion
+-->

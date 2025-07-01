@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Message Alert</title>
+  <style>
+    body {
+      margin-top: 200px !important;
+    }
+
+    .alert {
+      display: flex;
+      max-width: 24rem;
+      margin: 0 auto;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      background-color: #fff;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .alert-logo-wrap {
+      flex-shrink: 0;
+    }
+
+    .alert-logo {
+      height: 3rem;
+      width: 3rem;
+    }
+
+    .alert-body {
+      margin-left: 1.5rem;
+      padding-top: 0.25rem;
+    }
+
+    .alert-title {
+      color: #1a202c;
+      font-size: 1.25rem;
+      line-height: 1.25;
+      font-weight: 500;
+    }
+
+    .alert-message {
+      color: #718096;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="alert">
+    <div class="alert-logo-wrap">
+      <img class="alert-logo" src="../assets/img/warning.svg" alt="alert" />
+    </div>
+    <div class="alert-body">
+      <h4 class="alert-title">Are You Sure?</h4>
+      <p class="alert-message">You are about to delete a post</p>
+    </div>
+  </div>
+
+  <!-- V4 Example: Using size, margin-inline (ms-), and text-balance -->
+  <div class="flex items-center p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4">
+    <div>
+      <img class="size-12" src="../assets/img/warning.svg" alt="alert" />
+    </div>
+    <div class="ms-4"> <!-- ms-4 is the V4 logical property equivalent of ml-4 -->
+      <div class="text-xl font-medium text-black text-balance">Are You Sure?</div>
+      <p class="text-slate-500">You are about to delete a post</p>
+    </div>
+  </div>
+</body>
+<!-- 
+    TAILWIND CSS v4 UPDATES (from v3):
+
+    1. MAJOR CHANGES:
+       - New lighter-weight 'simplified' color palette
+       - Built-in support for container queries
+       - Simplified arbitrary value syntax (use [--value] instead of [--tw-value])
+       - Subgrid support
+       - New logical properties like start/end instead of left/right
+       
+    2. UTILITY CLASSES:
+       - New text balance utilities: text-balance, text-pretty
+       - New line-clamp utilities: line-clamp-[n]
+       - New size utilities: size-[value] (sets both width and height at once)
+       - New text-wrap utilities: text-wrap, text-nowrap, text-balance, text-pretty
+       - Animation improvements with animation-direction and animation-timeline
+
+    3. SYNTAX CHANGES:
+       - LTR and RTL logical properties: start/end instead of left/right
+       - margin-inline and padding-inline utilities: ms-*, me-*, ps-*, pe-*
+       - border-inline utilities: border-s, border-e
+       
+    4. REMOVAL OF LEGACY BROWSERS:
+       - Dropped IE11 support completely
+       - Default browser targets are now "last 1 year" of browser versions
+
+    5. CONFIGURATION:
+       - New default color palette with simplified naming convention
+       - Extended theme now includes new colors and features
+       - Extended spacing scale with new values
+  -->
+
+</html>

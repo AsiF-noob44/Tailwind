@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        screens: {
+          sm: '550px',
+          md: '800px',
+          lg: '1200px',
+          xl: '1440px',
+        },
+        fontFamily: {
+          sans: ['Graphik', 'sans-serif'],
+          serif: ['Merriweather', 'serif'],
+        },
+        extend: {
+          colors: {
+            primary: '#FF5733',
+            secondary: '#FFFC33',
+          },
+          spacing: {
+            5: '3.5rem',
+          },
+        },
+      },
+    }
+  </script>
+
+  <title>Customization</title>
+</head>
+<!-- Tailwind is mobile-first -->
+
+<body class="bg-black sm:bg-green-800 md:bg-primary lg:bg-yellow-800 xl:bg-purple-800 2xl:bg-orange-800">
+  <div class="bg-black p-5">
+    <h1 class="text-white text-xl md:text-3xl md:text-secondary xl:text-5xl">
+      Tailwind is awesome
+    </h1>
+  </div>
+
+  <script>
+    function showBrowserWidth() {
+      const width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth
+
+      document.querySelector('h1').innerHTML = `Width: ${width}`
+    }
+    window.onload = showBrowserWidth
+    window.onresize = showBrowserWidth
+  </script>
+</body>
+
+</html>
+
+<!-- TAILWIND CSS v4 CUSTOMIZATION UPDATES -->
+<div class="mt-8 p-6 bg-white rounded shadow">
+  <h2 class="text-2xl font-bold mb-4">Tailwind CSS v4 Customization Updates</h2>
+
+  <div class="mb-8">
+    <h3 class="text-xl font-semibold mb-2">Key Configuration Changes in v4</h3>
+
+    <div class="bg-gray-100 p-4 rounded mb-4">
+      <pre class="text-sm">
+// tailwind.config.js
+module.exports = {
+  // Content paths (new in v3+, still used in v4)
+  content: ['./src/**/*.{html,js}'],
+  
+  // Dark mode strategy (v4 adds support for multiple selectors)
+  darkMode: ['class', '[data-mode="dark"]'],
+  
+  // Theme customization
+  theme: {
+    // Container queries (new in v4)
+    containers: {
+      xs: '20rem',   // 320px
+      sm: '24rem',   // 384px
+      md: '28rem',   // 448px
+      lg: '32rem',   // 512px
+      xl: '36rem',   // 576px
+      '2xl': '42rem' // 672px
+    },
+    
+    // Simplified color palette (v4)
+    colors: {
+      // Core colors with different shades
+      blue: { /* shades */ },
+      // Can use extend to add to default colors
+    },
+    
+    // Extend existing theme
+    extend: {
+      // Add custom animations
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      }
+    }
+  }
+}
+        </pre>
+    </div>
+  </div>
+
+  <!-- New customization features -->
+  <div>
+    <h3 class="text-xl font-semibold mb-2">New Customization Features in v4</h3>
+
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <h4 class="font-medium mb-2">Container Query Configuration:</h4>
+        <p class="text-sm text-gray-600 mb-2">
+          Tailwind v4 allows customizing container query breakpoints directly in the config.
+        </p>
+        <div class="bg-gray-100 p-2 rounded">
+          <pre class="text-xs">
+containers: {
+  xs: '20rem',
+  sm: '24rem',
+  // ...other breakpoints
+}
+            </pre>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-medium mb-2">Multiple Dark Mode Selectors:</h4>
+        <p class="text-sm text-gray-600 mb-2">
+          Tailwind v4 supports multiple dark mode activation strategies.
+        </p>
+        <div class="bg-gray-100 p-2 rounded">
+          <pre class="text-xs">
+darkMode: [
+  'class', 
+  '[data-mode="dark"]',
+  '@media (prefers-color-scheme: dark)'
+]
+            </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Default Breakpoint Classes in v4 (unchanged from v3)
+    sm	640px	  @media (min-width: 640px) { ... }
+    md	768px	  @media (min-width: 768px) { ... }
+    lg	1024px	@media (min-width: 1024px) { ... }
+    xl	1280px	@media (min-width: 1280px) { ... }
+    2xl	1536px	@media (min-width: 1536px) { ... }
+-->
+
+<!-- Container Query Breakpoints in v4 (New)
+    @xs    20rem     320px
+    @sm    24rem     384px
+    @md    28rem     448px
+    @lg    32rem     512px
+    @xl    36rem     576px
+    @2xl   42rem     672px
+    @3xl   48rem     768px
+    @4xl   56rem     896px
+    @5xl   64rem     1024px
+    @6xl   72rem     1152px
+    @7xl   80rem     1280px
+-->

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      // In v4, darkMode defaults to 'media', but you can still use 'class'
+    }
+  </script>
+  <style>
+    .toggle-checkbox:checked {
+      right: 0;
+      border-color: #68d391;
+    }
+
+    .toggle-checkbox:checked+.toggle-label {
+      background-color: #68d391;
+    }
+  </style>
+  <title>Dark Mode</title>
+</head>
+
+<body>
+  <!-- By default, you can have your project use whatever mode your OS is using. You can use "dark:{class}". You can also set your config to use a class instead of using your OS mode -->
+  <div
+    class="container mx-auto mt-10 bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+    <h3 class="text-slate-900 dark:text-white text-base font-medium tracking-tight">
+      Writes Upside-Down
+    </h3>
+    <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+      The Zero Gravity Pen can be used to write in any orientation, including
+      upside-down. It even works in outer space.
+    </p>
+  </div>
+
+  <div class="relative inline-block w-10 me-2 ms-6 mt-6 align-middle select-none transition duration-200 ease-in">
+    <input type="checkbox" name="toggle" id="toggle" checked
+      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+    <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+  </div>
+
+  <script>
+    document.getElementById('toggle').addEventListener('change', function () {
+      if (this.checked) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    })
+  </script>
+
+  <!-- TAILWIND CSS v4 DARK MODE UPDATES -->
+  <div class="mt-8 p-6 bg-white dark:bg-gray-800 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4 text-black dark:text-white">Tailwind CSS v4 Dark Mode Updates</h2>
+
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold mb-2 text-black dark:text-white">Dark Mode Configuration in v4</h3>
+      <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded mb-4">
+        <pre class="text-sm text-gray-800 dark:text-gray-200">
+
+
+
+
+// In tailwind.config.js:
+module.exports = {
+  // In Tailwind v4, darkMode can be:
+  // 1. 'media' (default) - Uses prefers-color-scheme media query
+  // 2. 'class' - Manually toggle dark mode with a class
+  // 3. ['class', '[data-mode="dark"]'] - Use multiple selectors
+  darkMode: 'class',
+}</pre>
+      </div>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Tailwind CSS v4 has more flexible dark mode configuration options.
+        The new selector format allows targeting custom data attributes or other selectors for dark mode.
+      </p>
+    </div>
+
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold mb-2 text-black dark:text-white">New Dark Mode Strategy with Multiple Selectors
+      </h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        In v4, you can specify multiple dark mode selectors:
+      </p>
+
+      <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded">
+        <pre class="text-sm text-gray-800 dark:text-gray-200">
+
+
+// Example configuration:
+darkMode: ['class', '[data-theme="dark"]']
+
+// This allows either of these to trigger dark mode:
+// 1. .dark class on html element
+// 2. [data-theme="dark"] attribute on any parent</pre>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold mb-2 text-black dark:text-white">Enhanced Color System</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Tailwind CSS v4's simplified color system works well with dark mode:
+      </p>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="p-4 bg-blue-200 dark:bg-blue-700 rounded">
+          <p class="text-blue-800 dark:text-blue-200">
+            Text automatically adjusts in dark mode
+          </p>
+        </div>
+        <div class="p-4 bg-green-200 dark:bg-green-700 rounded">
+          <p class="text-green-800 dark:text-green-200">
+            Colors shift appropriately for readability
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- Credit for toggle button style
+https://tailwindcomponents.com/component/toggle-switch
+ -->

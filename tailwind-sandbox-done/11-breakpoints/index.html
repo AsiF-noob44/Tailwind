@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Breakpoints & Media Queries</title>
+</head>
+<!-- Tailwind is mobile-first -->
+
+<body class="bg-black sm:bg-green-800 md:bg-blue-800 lg:bg-yellow-800 xl:bg-purple-800 2xl:bg-orange-800">
+  <h1 class="text-white text-xl md:text-3xl xl:text-5xl">
+    Tailwind is awesome
+  </h1>
+
+  <script>
+    function showBrowserWidth() {
+      const width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth
+
+      document.querySelector('h1').innerHTML = `Width: ${width}`
+    }
+    window.onload = showBrowserWidth
+    window.onresize = showBrowserWidth
+  </script>
+</body>
+
+</html>
+
+<!-- TAILWIND CSS v4 BREAKPOINT CLASSES -->
+<!-- Standard Viewport Breakpoints
+    sm	640px	  @media (min-width: 640px) { ... }
+    md	768px	  @media (min-width: 768px) { ... }
+    lg	1024px	@media (min-width: 1024px) { ... }
+    xl	1280px	@media (min-width: 1280px) { ... }
+    2xl	1536px	@media (min-width: 1536px) { ... }
+  -->
+
+<!-- NEW IN v4: Container Query Breakpoints
+    @xs    20rem     320px
+    @sm    24rem     384px
+    @md    28rem     448px
+    @lg    32rem     512px
+    @xl    36rem     576px
+    @2xl   42rem     672px
+    @3xl   48rem     768px
+    @4xl   56rem     896px
+    @5xl   64rem     1024px
+    @6xl   72rem     1152px
+    @7xl   80rem     1280px
+  -->
+
+<div class="mt-8 p-6 bg-white rounded shadow">
+  <h2 class="text-2xl font-bold mb-4">Tailwind CSS v4 Container Queries</h2>
+
+  <div class="@container mb-6">
+    <h3 class="text-lg font-medium mb-2">Container Query Example:</h3>
+    <p class="text-gray-600">Resize your browser to see both containers change based on their own width, not the
+      viewport.</p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+      <div class="@container border p-4 bg-gray-100 rounded-lg">
+        <div class="@md:text-lg @lg:text-xl @xl:text-2xl font-bold">
+          This text changes based on container width
+        </div>
+        <div class="@md:grid @md:grid-cols-2 @xl:grid-cols-3 gap-2 mt-2">
+          <div class="bg-blue-100 p-2 rounded mb-2 @md:mb-0">Item 1</div>
+          <div class="bg-blue-100 p-2 rounded mb-2 @md:mb-0">Item 2</div>
+          <div class="bg-blue-100 p-2 rounded">Item 3</div>
+        </div>
+      </div>
+
+      <div class="@container border p-4 bg-gray-100 rounded-lg">
+        <div class="@md:text-lg @lg:text-xl @xl:text-2xl font-bold">
+          Independent of the first container
+        </div>
+        <div class="@md:flex @md:space-x-2 mt-2">
+          <div class="bg-green-100 p-2 rounded mb-2 @md:mb-0 @md:flex-1">Box 1</div>
+          <div class="bg-green-100 p-2 rounded @md:flex-1">Box 2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm text-gray-600 mt-2">
+    Container queries allow you to style elements based on the size of their parent container, not the viewport.<br>
+    Use <code>@container</code> on the parent and <code>@[size]:</code> prefixes on children (e.g.,
+    <code>@md:grid</code>).
+  </p>
+</div>
